@@ -1,4 +1,4 @@
-import os, sys
+import os
 import urllib
 import moviepy.editor as mp
 from pytube import YouTube, Search
@@ -44,7 +44,5 @@ def audio_downloader(url_input, output_path, file_name, page, e):
 def convert_mp4_to_mp3(file_path):
     clip = mp.AudioFileClip(file_path)
     new_file = os.path.splitext(file_path)[0] + ".mp3"
-    if sys.stdout is None:
-        sys.stdout = open(os.devnull, "w")
     clip.write_audiofile(new_file)
     os.remove(file_path)

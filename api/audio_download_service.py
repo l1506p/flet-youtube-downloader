@@ -28,10 +28,13 @@ class YtAudioDownload:
             self.progress_ring.visible = True
             self.progress_ring.update()
             title = e.control.data[1]
+            global row_title
             if emoji.emoji_count(title) > 0:
                 row_title = emoji.replace_emoji(title, replace="")
             elif "|" in title:
                 row_title = title.replace("|", "")
+            else:
+                row_title = title
             audio_downloader(
                 url_input=YOUTUBE_URL + e.control.data[0],
                 output_path=self.dir.directory_path.value,
