@@ -22,15 +22,17 @@ class AppLayout(ft.Container):
             page=self.page, radio_component=self.radio_component
         )
         self.search_field = SearchField()
+        self.prog_bar = ft.ProgressBar(bgcolor="transparent", value=0, bar_height=6)
         self.video_download = YtVideoDownload(
             page=self.page,
-            progress_ring=self.progress_ring,
             dir=self.directory_row,
+            prog_bar=self.prog_bar,
         )
         self.audio_download = YtAudioDownload(
             page=self.page,
             progress_ring=self.progress_ring,
             dir=self.directory_row,
+            prog_bar=self.prog_bar,
         )
 
         self.search_service = SearchSevice(
@@ -54,6 +56,7 @@ class AppLayout(ft.Container):
             controls=[
                 ft.Column(
                     controls=[
+                        self.prog_bar,
                         self.directory_row,
                         self.search_field,
                         self.search_service_container,
